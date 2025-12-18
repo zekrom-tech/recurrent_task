@@ -1,0 +1,18 @@
+<odoo>
+    <record id="project_task_view_form_inherit_hide_recurrence" model="ir.ui.view">
+    <field name="name">project.task.form.inherit.hide.recurrence</field>
+    <field name="model">project.task</field>
+    <!-- Please double-check this is the correct External ID from your system -->
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+
+        <!-- As a fallback, this will hide the div containing the fields if the tab is not found. -->
+        <xpath expr="//div[field[@name='repeat_interval']]" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+    </field>
+</record>
+
+
+</odoo>

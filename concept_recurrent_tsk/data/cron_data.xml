@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="ir_cron_recurring_tasks" model="ir.cron">
+            <field name="name">Generate Recurring Project Tasks</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_create_recurring_tasks()</field>
+            <!-- Runs every day at 1:00 AM -->
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active">True</field>
+            <!-- <field name="nextcall">2025-08-22 01:00:00</field> -->
+        </record>
+
+    </data>
+</odoo>

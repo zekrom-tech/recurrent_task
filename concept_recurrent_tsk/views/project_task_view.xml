@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+        <record id="project_task_view_form_recurrent" model="ir.ui.view">
+            <field name="name">project.task.form.recurrent</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Recurrent" name="recurrence_page" invisible="not recurring_task" groups="project.group_project_recurring_tasks">
+                        <group>
+                            <group>
+                                <label for="recurrence_interval" string="Repeat Every"/>
+                                <div class="o_row">
+                                    <field name="recurrence_interval" class="oe_inline"/>
+                                    <field name="recurrence_unit" nolabel="1" class="oe_inline"/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="recurrence_start_date"/>
+                            </group>
+                        </group>
+
+                        <!-- Repeat On Section -->
+                        <group string="Repeat On" invisible="recurrence_unit != 'weeks'">
+                            <div class="o_row o_wrap">
+                                <table class="o_group text-center">
+                                    <tbody>
+                                        <tr>
+                                            <td><label for="recurs_on_sun">Sun</label></td>
+                                            <td><label for="recurs_on_mon">Mon</label></td>
+                                            <td><label for="recurs_on_tue">Tue</label></td>
+                                            <td><label for="recurs_on_wed">Wed</label></td>
+                                            <td><label for="recurs_on_thu">Thu</label></td>
+                                            <td><label for="recurs_on_fri">Fri</label></td>
+                                            <td><label for="recurs_on_sat">Sat</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><field name="recurs_on_sun" nolabel="1"/></td>
+                                            <td><field name="recurs_on_mon" nolabel="1"/></td>
+                                            <td><field name="recurs_on_tue" nolabel="1"/></td>
+                                            <td><field name="recurs_on_wed" nolabel="1"/></td>
+                                            <td><field name="recurs_on_thu" nolabel="1"/></td>
+                                            <td><field name="recurs_on_fri" nolabel="1"/></td>
+                                            <td><field name="recurs_on_sat" nolabel="1"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </group>
+
+                        <!-- Until Section -->
+                        <group string="Until">
+                            <field name="recurrence_end_type" widget="radio" nolabel="1"/>
+                            <field name="recurrence_end_date" invisible="recurrence_end_type != 'until'"/>
+                        </group>
+
+                        <!-- Preview Section -->
+                        <div class="alert alert-success o_row o_wrap" role="alert" invisible="not recurrence_preview">
+                            <field name="recurrence_preview" nolabel="1" widget="html"/>
+                        </div>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_view_recurring_project_tasks" model="ir.actions.act_window">
+            <field name="name">Tasks in Recurrence</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="domain">['|', ('is_recurring_template', '=', True), ('recurring_template_id', '!=', False)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No recurring tasks found.
+                </p><p>
+                    Create a new task and mark it as recurring to see it here.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_recurring_project_tasks"
+            name="Recurring Tasks"
+            action="action_view_recurring_project_tasks"
+            parent="project.menu_main_pm"
+            sequence="15"/>
+
+    </data>
+</odoo>
